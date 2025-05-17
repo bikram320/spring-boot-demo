@@ -12,7 +12,7 @@ public class OrderService {
 
     //constructor injection is preferred and commonly used for dependencies injection
     @Autowired
-    public OrderService(@Qualifier("paypal") PaymentService paymentService){
+    public OrderService(@Qualifier("stripe") PaymentService paymentService){
         this.paymentService=paymentService;
     }
 //    public void setPaymentService(PaymentService paymentService) {
