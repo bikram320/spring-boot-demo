@@ -4,15 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class OrderService {
 
 
     PaymentService paymentService;
 
     //constructor injection is preferred and commonly used for dependencies injection
-    @Autowired
-    public OrderService(@Qualifier("stripe") PaymentService paymentService){
+//    @Autowired
+    public OrderService( /*@Qualifier("stripe")*/ PaymentService paymentService){
         this.paymentService=paymentService;
     }
 //    public void setPaymentService(PaymentService paymentService) {

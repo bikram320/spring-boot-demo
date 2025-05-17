@@ -2,7 +2,7 @@ package com.example.spring_boot_demo;
 
 import org.springframework.stereotype.Service;
 
-@Service("paypal")
+//@Service("paypal")
 public class PaypalPaymentService implements PaymentService{
 
 

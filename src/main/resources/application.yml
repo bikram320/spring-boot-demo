@@ -7,3 +7,5 @@ stripe:
   timeout: 1000
   api-enabled: true
   currencies: USD , NPR , EUR, GBP
+
+payment-gateway : paypal
