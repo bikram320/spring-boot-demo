@@ -3,6 +3,7 @@ package com.example.spring_boot_demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class SpringBootDemoApplication {
@@ -13,10 +14,11 @@ public class SpringBootDemoApplication {
 // 		var orderService = new OrderService();
 //		orderService.setPaymentService(new PaypalPaymentService());
 		//Spring IoC
-		ApplicationContext context = SpringApplication.run(SpringBootDemoApplication.class, args);
+		ConfigurableApplicationContext context = SpringApplication.run(SpringBootDemoApplication.class, args);
 		OrderService orderService = context.getBean(OrderService.class);
 		context.getBean(HeavyResource.class);
 		orderService.placeOrder();
+		context.close();
 	}
 
 }
