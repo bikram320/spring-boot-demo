@@ -15,6 +15,7 @@ public class SpringBootDemoApplication {
 		//Spring IoC
 		ApplicationContext context = SpringApplication.run(SpringBootDemoApplication.class, args);
 		OrderService orderService = context.getBean(OrderService.class);
+		context.getBean(HeavyResource.class);
 		orderService.placeOrder();
 	}
 
