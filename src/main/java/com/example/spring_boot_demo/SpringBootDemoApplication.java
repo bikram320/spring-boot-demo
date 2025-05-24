@@ -2,7 +2,6 @@ package com.example.spring_boot_demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
@@ -18,7 +17,7 @@ public class SpringBootDemoApplication {
 		OrderService orderService = context.getBean(OrderService.class);
 		context.getBean(HeavyResource.class);
 		orderService.placeOrder();
-		context.close();
+//		context.close();
 	}
 
 }

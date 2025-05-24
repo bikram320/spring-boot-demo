@@ -1,6 +1,12 @@
 spring:
   application:
     name: spring-boot-demo
+  datasource:
+    url: jdbc:mysql://localhost:3306/store?createDatabaseIfNotExist=true
+    username: root
+    password: bikram123@
+
+
 
 stripe:
   api-url: https://apiUrl.stripe.com
@@ -9,3 +15,5 @@ stripe:
   currencies: USD , NPR , EUR, GBP
 
 payment-gateway : paypal
+
+
