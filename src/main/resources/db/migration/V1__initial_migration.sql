@@ -20,3 +20,5 @@ create table addresses
         foreign key (user_id) references user (id)
 );
 
+
+
