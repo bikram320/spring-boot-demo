@@ -2,6 +2,7 @@ package com.example.spring_boot_demo;
 
 import com.example.spring_boot_demo.entities.Address;
 import com.example.spring_boot_demo.entities.Profile;
+import com.example.spring_boot_demo.entities.Tags;
 import com.example.spring_boot_demo.entities.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -33,16 +34,20 @@ public class SpringBootDemoApplication {
 				.password("password")
 				.build();
 
-		Address address = Address.builder()
-				.id(1L)
-				.street("Jana Jyoti street")
-				.city("Devchuli")
-				.state("Gandaki")
-				.zip("123122")
-				.build();
-
-		user.addAddress(address);
+//		Address address = Address.builder()
+//				.id(1L)
+//				.street("Jana Jyoti street")
+//				.city("Devchuli")
+//				.state("Gandaki")
+//				.zip("123122")
+//				.build();
+//
+//		user.addAddress(address);
+		var tag = new Tags("tag1");
+		user.addTag(tag);
 		System.out.println(user);
+
+
 
 	}
 
