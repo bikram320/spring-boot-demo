@@ -1,14 +1,17 @@
 package com.example.spring_boot_demo.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
 
 @Getter
 @Setter
+@Builder
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "profile")
 public class Profile {
@@ -29,4 +32,10 @@ public class Profile {
 
     @Column(name = "loyalty_points")
     private Integer loyalty_points;
+
+    @OneToOne
+    @JoinColumn(name = "id")
+    @ToString.Exclude
+    @MapsId
+    private User user;
 }

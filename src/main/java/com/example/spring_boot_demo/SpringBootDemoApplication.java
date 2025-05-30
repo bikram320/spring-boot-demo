@@ -43,8 +43,16 @@ public class SpringBootDemoApplication {
 //				.build();
 //
 //		user.addAddress(address);
-		var tag = new Tags("tag1");
-		user.addTag(tag);
+//		var tag = new Tags("tag1");
+//		user.addTag(tag);
+		var profile = Profile.builder()
+						.bio("Bio")
+								.phone_number("555-555-5555")
+				.build();
+
+		user.setProfile(profile);
+		profile.setUser(user);
+		
 		System.out.println(user);
 
 
