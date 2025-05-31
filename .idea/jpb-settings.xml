@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DatabaseMigrationSettings" lastSelectedDirectory="entities" />
+  <component name="JpaLiquibaseChangesConfig">
+    <exclude-change idName="fk_user_tags_on_user" tagName="addForeignKeyConstraint" />
+    <exclude-change idName="fk_user_tags_on_tags" tagName="addForeignKeyConstraint" />
+    <exclude-change idName="user#password" tagName="addUniqueConstraint" />
+    <exclude-change idName="user#name" tagName="addUniqueConstraint" />
+    <exclude-change idName="user#email" tagName="addUniqueConstraint" />
+    <exclude-change idName="user_tags" tagName="createTable" />
+    <exclude-change idName="user" tagName="createTable" />
+  </component>
 </project>
