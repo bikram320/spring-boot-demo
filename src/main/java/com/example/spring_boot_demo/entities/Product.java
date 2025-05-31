@@ -1,7 +1,13 @@
 package com.example.spring_boot_demo.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.math.BigDecimal;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "product")
 public class Product {
@@ -13,13 +19,10 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "price")
-    private double price;
+    @Column(name = "price", precision = 10, scale = 2)
+    private BigDecimal price;
 
-    @Column(name = "category_id")
-    private byte categoryId;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 
