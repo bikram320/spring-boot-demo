@@ -16,11 +16,14 @@ public class Product {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name",nullable = false)
     private String name;
 
-    @Column(name = "price", precision = 10, scale = 2)
+    @Column(name = "price", precision = 10, scale = 2 , nullable = false)
     private BigDecimal price;
+
+    @Column(name = "description",columnDefinition = "TEXT", nullable = false)
+    private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
