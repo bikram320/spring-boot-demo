@@ -5,6 +5,7 @@ import com.example.spring_boot_demo.entities.Profile;
 import com.example.spring_boot_demo.entities.Tags;
 import com.example.spring_boot_demo.entities.User;
 import com.example.spring_boot_demo.repositories.UserRepository;
+import com.example.spring_boot_demo.services.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -21,13 +22,14 @@ public class SpringBootDemoApplication {
 //		user.setPassword("password");
 
 		//using builder pattern
-		User user = User.builder()
-				.name("John")
-				.email("john@gmail.com")
-				.password("password")
-				.build();
+//		User user = User.builder()
+//				.name("John")
+//				.email("john@gmail.com")
+//				.password("password")
+//				.build();
 
-		var repository = context.getBean(UserRepository.class);
+		var service = context.getBean(UserService.class);
+		service.showEntitiesState();
 		//Saving user
 //		repository.save(user);
 
@@ -37,8 +39,8 @@ public class SpringBootDemoApplication {
 //		System.out.println(user1.getId()+user1.getEmail());
 
 		//Deleting User
-		repository.deleteById(1L);
-		repository.deleteAll();
+//		repository.deleteById(1L);
+//		repository.deleteAll();
 
 //		Address address = Address.builder()
 //				.id(1L)
