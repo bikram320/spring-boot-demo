@@ -6,4 +6,6 @@ spring:
     username: root
     password: bikram123@
 
+  jpa:
+    show-sql: true
 
