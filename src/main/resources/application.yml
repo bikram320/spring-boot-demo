@@ -7,13 +7,3 @@ spring:
     password: bikram123@
 
 
-
-stripe:
-  api-url: https://apiUrl.stripe.com
-  timeout: 1000
-  api-enabled: true
-  currencies: USD , NPR , EUR, GBP
-
-payment-gateway : paypal
-
-

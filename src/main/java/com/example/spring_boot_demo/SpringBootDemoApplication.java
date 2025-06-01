@@ -13,15 +13,6 @@ public class SpringBootDemoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootDemoApplication.class, args);
-//		var orderService = new OrderService(new PaypalPaymentService())
-// 		var orderService = new OrderService();
-//		orderService.setPaymentService(new PaypalPaymentService());
-		//Spring IoC
-//		ConfigurableApplicationContext context = SpringApplication.run(SpringBootDemoApplication.class, args);
-//		OrderService orderService = context.getBean(OrderService.class);
-//		context.getBean(HeavyResource.class);
-//		orderService.placeOrder();
-//		context.close();
 //		User user = new User();
 //		user.setName("John");
 //		user.setEmail("john@gmail.com");
