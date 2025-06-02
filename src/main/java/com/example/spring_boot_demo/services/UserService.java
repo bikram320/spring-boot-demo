@@ -1,6 +1,7 @@
 package com.example.spring_boot_demo.services;
 
 import com.example.spring_boot_demo.entities.User;
+import com.example.spring_boot_demo.repositories.AddressRepository;
 import com.example.spring_boot_demo.repositories.ProfileRepository;
 import com.example.spring_boot_demo.repositories.UserRepository;
 import jakarta.persistence.EntityManager;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @AllArgsConstructor
 public class UserService {
 
+    private final AddressRepository addressRepository;
     private UserRepository userRepository;
     private final ProfileRepository profileRepository;
     private EntityManager entityManager;
@@ -44,7 +46,12 @@ public class UserService {
     }
     @Transactional
     public void showRelatedEntities(){
-        var profile= profileRepository.findById( 5L).orElseThrow();
+        var profile= profileRepository.findById( 1L).orElseThrow();
         System.out.println(profile.getUser().getName());
+    }
+    @Transactional
+    public void  fetchAddress(){
+        var address =addressRepository.findById(1L).orElseThrow();
+        System.out.println(address.getState());
     }
 }

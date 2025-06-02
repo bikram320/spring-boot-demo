@@ -9,8 +9,8 @@ create table user
 
 create table addresses
 (
-    id      bigint       not null
-        primary key,
+    id      bigint       not null auto_increment
+        primary key ,
     street  varchar(255) not null,
     city    varchar(255) not null,
     zip     varchar(255) not null,

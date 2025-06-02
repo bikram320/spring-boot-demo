@@ -23,7 +23,7 @@ public class SpringBootDemoApplication {
 //				.build();
 
 		var service = context.getBean(UserService.class);
-		service.showRelatedEntities();
+		service.fetchAddress();
 
 
 
