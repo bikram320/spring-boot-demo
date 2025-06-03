@@ -1,5 +1,6 @@
 package com.example.spring_boot_demo.services;
 
+import com.example.spring_boot_demo.entities.Address;
 import com.example.spring_boot_demo.entities.User;
 import com.example.spring_boot_demo.repositories.AddressRepository;
 import com.example.spring_boot_demo.repositories.ProfileRepository;
@@ -53,5 +54,24 @@ public class UserService {
     public void  fetchAddress(){
         var address =addressRepository.findById(1L).orElseThrow();
         System.out.println(address.getState());
+    }
+
+    public void persistRelated(){
+        var user = User.builder()
+                .name("John")
+                .email("john@gmail.com")
+                .password("password")
+                .build();
+
+        var address =  Address.builder()
+                .zip("1232")
+                .state("state")
+                .city("city")
+                .street("street")
+                .build();
+
+        user.addAddress(address);
+        userRepository.save(user);
+
     }
 }

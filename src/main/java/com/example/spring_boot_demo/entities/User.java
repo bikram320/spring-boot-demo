@@ -29,7 +29,7 @@ public class User {
     @Column(unique = true, nullable = false , name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.PERSIST)
     @Builder.Default
     @ToString.Exclude
     private List<Address> addresses = new ArrayList<>();
