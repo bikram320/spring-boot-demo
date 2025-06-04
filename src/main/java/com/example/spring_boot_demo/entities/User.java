@@ -29,7 +29,7 @@ public class User {
     @Column(unique = true, nullable = false , name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "user" , cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "user" , cascade = {CascadeType.PERSIST, CascadeType.REMOVE} , orphanRemoval = true)
     @Builder.Default
     @ToString.Exclude
     private List<Address> addresses = new ArrayList<>();
@@ -37,6 +37,10 @@ public class User {
     public void addAddress(Address address) {
         this.addresses.add(address);
         address.setUser(this);
+    }
+    public void removeAddress(Address address) {
+        this.addresses.remove(address);
+        address.setUser(null);
     }
 
     @ManyToMany()
@@ -54,7 +58,7 @@ public class User {
         tag.getUsers().add(this);
     }
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user" , cascade = CascadeType.REMOVE)
     private Profile profile;
 
     @ManyToMany
