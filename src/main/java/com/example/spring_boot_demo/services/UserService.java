@@ -1,14 +1,16 @@
 package com.example.spring_boot_demo.services;
 
 import com.example.spring_boot_demo.entities.Address;
+import com.example.spring_boot_demo.entities.Category;
+import com.example.spring_boot_demo.entities.Product;
 import com.example.spring_boot_demo.entities.User;
-import com.example.spring_boot_demo.repositories.AddressRepository;
-import com.example.spring_boot_demo.repositories.ProfileRepository;
-import com.example.spring_boot_demo.repositories.UserRepository;
+import com.example.spring_boot_demo.repositories.*;
 import jakarta.persistence.EntityManager;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
 
 @Service
 @AllArgsConstructor
@@ -17,6 +19,8 @@ public class UserService {
     private final AddressRepository addressRepository;
     private UserRepository userRepository;
     private final ProfileRepository profileRepository;
+    private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
     private EntityManager entityManager;
 
     @Transactional
@@ -81,6 +85,44 @@ public class UserService {
         var address =  user.getAddresses().getFirst();
         user.removeAddress(address);
         userRepository.save(user);
+
+    }
+    @Transactional
+    public void manageProduct(){
+
+        //delete product by id
+        productRepository.deleteById(1L);
+
+
+
+        //adding all product into a user wishlist
+//        var user = userRepository.findById(4L).orElseThrow();
+//        var product = productRepository.findAll();
+//        product.forEach(user::addWishlist);
+//        userRepository.save(user);
+        //Inserting product table into along with category
+//        var category = new Category("Category 1");
+//
+//        var product = Product.builder()
+//                .name("Keyboard")
+//                .price(BigDecimal.valueOf(1232))
+//                .category(category)
+//                .description("Keyboard" )
+//                .build();
+//
+//        productRepository.save(product);
+
+        //fetching same category and adding another product on it
+//        var category = categoryRepository.findById((byte)1).orElseThrow();
+//
+//        var product = Product.builder()
+//                .name("mouse")
+//                .price(BigDecimal.valueOf(232))
+//                .category(category)
+//                .description("mouse " )
+//                .build();
+//
+//        productRepository.save(product);
 
     }
 }

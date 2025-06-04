@@ -1,9 +1,7 @@
 package com.example.spring_boot_demo.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -12,6 +10,9 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "product")
 public class Product {
     @Id
@@ -28,7 +29,7 @@ public class Product {
     @Column(name = "description",columnDefinition = "TEXT", nullable = false)
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.PERSIST)
     @JoinColumn(name = "category_id")
     private Category category;
 

@@ -68,4 +68,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
     private Set<Product> wishlist = new HashSet<>();
+    public void addWishlist(Product product) {
+        this.wishlist.add(product);
+    }
 }
