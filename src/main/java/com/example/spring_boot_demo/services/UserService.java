@@ -129,4 +129,13 @@ public class UserService {
     public void updateProductPrice(BigDecimal price, byte categoryId) {
         productRepository.updatePriceByCategory(price, categoryId);
     }
+    @Transactional
+    public void updateProductName(String name , byte categoryId) {
+        productRepository.updateProductNameByCategory(name, categoryId);
+    }
+
+    @Transactional
+    public void updateProductDescription(String description,String name) {
+        productRepository.updateDescriptionByName(description, name);
+    }
 }

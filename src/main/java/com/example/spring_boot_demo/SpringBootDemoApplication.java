@@ -25,7 +25,7 @@ public class SpringBootDemoApplication {
 //				.build();
 
 		var service = context.getBean(UserService.class);
-		service.updateProductPrice(BigDecimal.valueOf(1500),(byte) 1);
+		service.updateProductDescription("this is nice Keyboard","keyboard");
 
 
 
