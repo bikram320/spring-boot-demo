@@ -125,4 +125,8 @@ public class UserService {
 //        productRepository.save(product);
 
     }
+    @Transactional
+    public void updateProductPrice(BigDecimal price, byte categoryId) {
+        productRepository.updatePriceByCategory(price, categoryId);
+    }
 }

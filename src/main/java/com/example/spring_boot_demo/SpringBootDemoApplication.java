@@ -11,6 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.math.BigDecimal;
+
 @SpringBootApplication
 public class SpringBootDemoApplication {
 
@@ -23,7 +25,7 @@ public class SpringBootDemoApplication {
 //				.build();
 
 		var service = context.getBean(UserService.class);
-		service.manageProduct();
+		service.updateProductPrice(BigDecimal.valueOf(1500),(byte) 1);
 
 
 
