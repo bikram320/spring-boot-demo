@@ -13,7 +13,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString
 @Entity
 @Table(name = "user")
 public class User {
@@ -50,7 +49,6 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
     @Builder.Default
-    @ToString.Exclude
     private Set<Tags> tags = new HashSet<>();
 
     public void addTag(Tags tag) {
@@ -70,5 +68,13 @@ public class User {
     private Set<Product> wishlist = new HashSet<>();
     public void addWishlist(Product product) {
         this.wishlist.add(product);
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "id = " + id + ", " +
+                "name = " + name + ", " +
+                "email = " + email + ")";
     }
 }

@@ -1,5 +1,6 @@
 package com.example.spring_boot_demo.services;
 
+import com.example.spring_boot_demo.dtos.ProductSummaryDTO;
 import com.example.spring_boot_demo.entities.Address;
 import com.example.spring_boot_demo.entities.Category;
 import com.example.spring_boot_demo.entities.Product;
@@ -22,6 +23,7 @@ public class UserService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
     private EntityManager entityManager;
+
 
     @Transactional
     public void showEntitiesState(){
@@ -142,5 +144,11 @@ public class UserService {
     public void fetchByCategory(){
         var products =productRepository.findByCategory(new Category((byte) 1));
         products.forEach(System.out::println);
+    }
+
+    @Transactional
+    public void fetchUser(){
+       var user = userRepository.findByEmail("john@gmail.com").orElseThrow();
+        System.out.println(user);
     }
 }
