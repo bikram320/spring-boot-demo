@@ -138,4 +138,9 @@ public class UserService {
     public void updateProductDescription(String description,String name) {
         productRepository.updateDescriptionByName(description, name);
     }
+
+    public void fetchByCategory(){
+        var products =productRepository.findByCategory(new Category((byte) 1));
+        products.forEach(System.out::println);
+    }
 }

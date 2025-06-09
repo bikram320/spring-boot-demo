@@ -1,5 +1,8 @@
 package com.example.spring_boot_demo.repositories;
 
+import com.example.spring_boot_demo.dtos.ProductSummary;
+import com.example.spring_boot_demo.dtos.ProductSummaryDTO;
+import com.example.spring_boot_demo.entities.Category;
 import com.example.spring_boot_demo.entities.Product;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -60,4 +63,7 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     @Modifying
     @Query("update Product p set p.description=:description WHERE p.name=:name")
     void updateDescriptionByName(String description, String name);
+
+    @Query("select new com.example.spring_boot_demo.dtos.ProductSummaryDTO(p.id,p.name) from Product p where p.category = ?1")
+    List<ProductSummaryDTO> findByCategory(Category category);
 }
