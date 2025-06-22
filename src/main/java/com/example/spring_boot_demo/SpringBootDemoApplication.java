@@ -25,7 +25,7 @@ public class SpringBootDemoApplication {
 //				.build();
 
 		var service = context.getBean(UserService.class);
-		service.findProductByPrice();
+		service.findProfileByLoyaltyPoint();
 
 
 

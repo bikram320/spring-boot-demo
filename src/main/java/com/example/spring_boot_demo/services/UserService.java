@@ -165,4 +165,12 @@ public class UserService {
         var products = productRepository.findByPriceBetweenOrderByName(BigDecimal.valueOf(1), BigDecimal.valueOf(2000));
         products.forEach(System.out::println);
     }
+
+    @Transactional
+    public void findProfileByLoyaltyPoint(){
+        var users = userRepository.findLoyalUser(10);
+        users.forEach(u->{
+            System.out.println(u.getId()+": "+u.getEmail());
+        });
+    }
 }
