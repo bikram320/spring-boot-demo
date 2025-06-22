@@ -6,6 +6,7 @@ import com.example.spring_boot_demo.entities.Category;
 import com.example.spring_boot_demo.entities.Product;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
@@ -45,8 +46,9 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 //  List<Product> findTop5ByNameOrderByPriceDesc(String name);
 
   //jPQL
-  @Query("SELECT  p FROM Product p  WHERE p.price between :min and :max  order by p.name")
-  List<Product> findByPriceBetweenOrderByName(@Param("min") BigDecimal min, @Param("max") BigDecimal max);
+  //now using procedure
+  @Procedure("findProductsByPrice")
+  List<Product> findByPriceBetweenOrderByName(BigDecimal min,BigDecimal max);
 
   @Query("SELECT  COUNT(*) FROM Product p  WHERE p.price between :min and :max  order by p.name")
   long countProducts(@Param("min") BigDecimal min, @Param("max") BigDecimal max);

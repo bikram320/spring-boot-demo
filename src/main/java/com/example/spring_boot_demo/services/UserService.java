@@ -160,4 +160,9 @@ public class UserService {
             u.getAddresses().forEach(System.out::println);
         });
     }
+    @Transactional
+    public void findProductByPrice(){
+        var products = productRepository.findByPriceBetweenOrderByName(BigDecimal.valueOf(1), BigDecimal.valueOf(2000));
+        products.forEach(System.out::println);
+    }
 }
