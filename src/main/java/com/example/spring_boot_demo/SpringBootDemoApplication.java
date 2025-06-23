@@ -25,7 +25,7 @@ public class SpringBootDemoApplication {
 //				.build();
 
 		var service = context.getBean(UserService.class);
-		service.fetchProductsByCriteria();
+		service.fetchProductBySpecification("keyboard",BigDecimal.valueOf(1100),BigDecimal.valueOf(1500));
 
 
 

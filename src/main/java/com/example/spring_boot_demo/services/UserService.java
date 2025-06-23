@@ -6,10 +6,12 @@ import com.example.spring_boot_demo.entities.Category;
 import com.example.spring_boot_demo.entities.Product;
 import com.example.spring_boot_demo.entities.User;
 import com.example.spring_boot_demo.repositories.*;
+import com.example.spring_boot_demo.repositories.specification.ProductSpec;
 import jakarta.persistence.EntityManager;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -195,6 +197,23 @@ public class UserService {
         var products = productCriteriaRepository.
                 findProductsByCriteria("keyboard",BigDecimal.valueOf(1100),BigDecimal.valueOf(2000));
         products.forEach(System.out::println);
+    }
+
+    @Transactional
+    public void fetchProductBySpecification(String name , BigDecimal minPrice , BigDecimal maxPrice){
+        Specification<Product> spec = Specification.where(null);
+
+        if(name != null){
+            spec = spec.and(ProductSpec.hasName(name));
+        }
+        if(minPrice != null){
+            spec=spec.and(ProductSpec.hasPriceGreaterThanOrEqualTo(minPrice));
+        }
+        if(maxPrice != null){
+            spec = spec.and(ProductSpec.hasPriceLessThanOrEqualTo(maxPrice));
+        }
+
+        productRepository.findAll(spec).forEach(System.out::println);
     }
 
 }
