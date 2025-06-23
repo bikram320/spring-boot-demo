@@ -9,8 +9,7 @@ import com.example.spring_boot_demo.repositories.*;
 import com.example.spring_boot_demo.repositories.specification.ProductSpec;
 import jakarta.persistence.EntityManager;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -214,6 +213,26 @@ public class UserService {
         }
 
         productRepository.findAll(spec).forEach(System.out::println);
+    }
+
+    public void fetchSortedProduct(){
+        Sort sort = Sort.by("name").descending()
+                .and(Sort.by("price").ascending());
+
+        productRepository.findAll(sort).forEach(System.out::println);
+    }
+    public void fetchPaginatedProduct(int pageNumber, int pageSize){
+        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
+        Page<Product> products = productRepository.findAll(pageRequest);
+
+        var product= products.getContent();
+        product.forEach(System.out::println);
+
+        var pages=products.getNumber();
+        var elements=products.getTotalElements();
+
+        System.out.println("Page Number: "+pageNumber);
+        System.out.println("Page elements: "+elements);
     }
 
 }
