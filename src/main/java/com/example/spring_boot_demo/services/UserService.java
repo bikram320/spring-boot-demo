@@ -25,6 +25,7 @@ public class UserService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
     private EntityManager entityManager;
+    private final ProductCriteriaRepository productCriteriaRepository;
 
 
     @Transactional
@@ -164,7 +165,8 @@ public class UserService {
     }
     @Transactional
     public void findProductByPrice(){
-        var products = productRepository.findByPriceBetweenOrderByName(BigDecimal.valueOf(1), BigDecimal.valueOf(2000));
+        var products = productRepository.
+                findByPriceBetweenOrderByName(BigDecimal.valueOf(1), BigDecimal.valueOf(2000));
         products.forEach(System.out::println);
     }
 
@@ -188,4 +190,11 @@ public class UserService {
         var products = productRepository.findAll(example);
         products.forEach(System.out::println);
     }
+    @Transactional
+    public void fetchProductsByCriteria(){
+        var products = productCriteriaRepository.
+                findProductsByCriteria("keyboard",BigDecimal.valueOf(1100),BigDecimal.valueOf(2000));
+        products.forEach(System.out::println);
+    }
+
 }
