@@ -8,6 +8,8 @@ import com.example.spring_boot_demo.entities.User;
 import com.example.spring_boot_demo.repositories.*;
 import jakarta.persistence.EntityManager;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -172,5 +174,18 @@ public class UserService {
         users.forEach(u->{
             System.out.println(u.getId()+": "+u.getEmail());
         });
+    }
+    @Transactional
+    public void fetchProductByMatching(){
+        var product = new Product();
+
+        product.setName("keyboard");
+
+        var matcher = ExampleMatcher.matching()
+                                            .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
+
+        Example<Product> example = Example.of(product, matcher);
+        var products = productRepository.findAll(example);
+        products.forEach(System.out::println);
     }
 }

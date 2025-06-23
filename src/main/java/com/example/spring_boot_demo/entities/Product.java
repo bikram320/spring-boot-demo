@@ -11,6 +11,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Builder
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "product")
@@ -31,6 +32,7 @@ public class Product {
 
     @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.PERSIST)
     @JoinColumn(name = "category_id")
+    @ToString.Exclude
     private Category category;
 
     @ManyToMany(mappedBy = "wishlist")
